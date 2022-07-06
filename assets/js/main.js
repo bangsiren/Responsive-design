@@ -47,11 +47,45 @@ const toggleItem = (item) => {
 }
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 
+const sections = document.querySelectorAll('section[id]')
 
+function scrollActive() {
+    const scrollY = window.pageYOffset
+     sections.forEach(current => {
+        const sectionHeight = current.offsetHeight,
+              sectionTop = current.offsetTop -58,
+              sectionId = current.getAttribute('id');
+              if (scrollY > sectionTop && scrollY <= sectionHeight + sectionHeight) {
+                document.querySelector('.nav__menu a[href*=' + sectionId +']').classList.add('active-link');
+              } else {
+                document.querySelector('.nav__menu a[href*=' + sectionId +']').classList.remove('active-link');
+         }
+     })
+}
+window.addEventListener('scroll', scrollActive);
 /*=============== SHOW SCROLL UP ===============*/ 
 
-
+function scrollUp () {
+    const scrollUp = document.getElementById('scroll-up')
+    if(this.scrollY >= 350) {
+        scrollUp.classList.add('show-scroll')
+    } else {
+        scrollUp.classList.remove('show-scroll')
+    }
+}
+window.addEventListener('scroll', scrollUp)
 /*=============== DARK LIGHT THEME ===============*/ 
 
+const themeButtom = document.getElementById('theme-button');
+const darkTheme = 'dark-theme'
+const iconTheme = 'bx-sun'
+
+//Previous selected topic (if user selected)
+const selectedTheme = localStorage.getItem('selected-theme');
+const selectedIcon = localStorage.getItem('selected-icon');
+
+// We obtain the current them that the interface has by validation the dark-theme class
+const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
+const getCurrentIcon = () => themeButtom.classList.contains(iconTheme) ? 'bx bx-moon' : 'bx bx-sun'
 
 /*=============== SCROLL REVEAL ANIMATION ===============*/
