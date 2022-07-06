@@ -84,8 +84,18 @@ const iconTheme = 'bx-sun'
 const selectedTheme = localStorage.getItem('selected-theme');
 const selectedIcon = localStorage.getItem('selected-icon');
 
-// We obtain the current them that the interface has by validation the dark-theme class
-const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
+// We obtain the current them that the interface has by validating the dark-theme class
+const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
 const getCurrentIcon = () => themeButtom.classList.contains(iconTheme) ? 'bx bx-moon' : 'bx bx-sun'
 
+if (selectedTheme) {
+    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
+    document.body.classList[selectedIcon === 'bx bx-moon' ? 'add' : 'remove'](iconTheme);
+}
+themeButtom.addEventListener('clik', ()=>{
+    // Add or remove the dark / icon theme
+    document.body.classList.toggle(darkTheme)
+    themeButtom.classList.toggle.toggle(iconTheme)
+   // We save the theme and the currnt icon that the user chose 
+})
 /*=============== SCROLL REVEAL ANIMATION ===============*/
