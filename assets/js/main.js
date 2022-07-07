@@ -74,6 +74,7 @@ function scrollUp () {
     }
 }
 window.addEventListener('scroll', scrollUp)
+ 
 /*=============== DARK LIGHT THEME ===============*/ 
 
 const themeButtom = document.getElementById('theme-button');
@@ -89,13 +90,15 @@ const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dar
 const getCurrentIcon = () => themeButtom.classList.contains(iconTheme) ? 'bx bx-moon' : 'bx bx-sun'
 
 if (selectedTheme) {
-    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
-    document.body.classList[selectedIcon === 'bx bx-moon' ? 'add' : 'remove'](iconTheme);
+    document.body.classList[selectedTheme == 'dark' ? 'add' : 'remove'](darkTheme);
+    document.body.classList[selectedIcon == 'bx bx-moon' ? 'add' : 'remove'](iconTheme);
 }
-themeButtom.addEventListener('clik', ()=>{
+themeButtom.addEventListener('click', ()=>{
     // Add or remove the dark / icon theme
-    document.body.classList.toggle(darkTheme)
-    themeButtom.classList.toggle.toggle(iconTheme)
-   // We save the theme and the currnt icon that the user chose 
-})
+    document.body.classList.toggle(darkTheme);
+    themeButtom.classList.toggle(iconTheme);
+   // We save the theme and the currnt icon that the user chose
+   localStorage.setItem('selected-theme', getCurrentTheme()) 
+   localStorage.setItem('selected-icon', getCurrentIcon())
+});
 /*=============== SCROLL REVEAL ANIMATION ===============*/
