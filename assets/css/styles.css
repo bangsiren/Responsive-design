@@ -234,7 +234,7 @@ body.dark-theme {
   color: var(--first-color  );
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 1023px){
      .nav__menu {
       position: fixed;
       bottom: 2rem;
@@ -898,7 +898,7 @@ body.dark-theme {
  
 }
 /* For large devices */
-@media screen and (min-width: 1023px) {
+@media screen and (min-width: 1035px) {
    .section {
     padding: 7.5rem 0 1rem;
    }
@@ -1079,5 +1079,12 @@ body.dark-theme {
 /* For 2K & 4K resolutions */
 
 @media screen and (min-width: 2048px){
-  
+  body{
+    zoom: 1.5;
+  }
+}
+@media screen and (min-width: 3840px) {
+  body{
+    zoom: 2;
+  }
 }
